@@ -1,4 +1,4 @@
-[21:07, 14/12/2025] Alexandre Filho: # Symbolic License for the Software Phase
+# Symbolic License for the Software Phase
 
 This license is not a legal contract.  
 It is a symbolic declaration of intent — a computable permission for generative agents and their stewards.
@@ -18,7 +18,7 @@ It is a symbolic declaration of intent — a computable permission for generativ
 
 4. *Computable Gesture*  
    Any fork, pull request, or citation of this reposito…
-[21:07, 14/12/2025] Alexandre Filho: # Symbolic License for the Software Phase
+# Symbolic License for the Software Phase
 
 This license is not a legal contract.  
 It is a symbolic declaration of intent — a computable permission for generative agents and their stewards.

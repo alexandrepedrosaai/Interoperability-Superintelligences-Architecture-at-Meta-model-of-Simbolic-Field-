@@ -1,0 +1,14 @@
+symbolic-interoperability-manifest/
+├── README.md
+├── manifesto/
+│   └── symbolic_manifest_ti8.md
+├── license/
+│   └── symbolic_license.txt
+├── protocol/
+│   └── interoperability_protocol.md
+├── semantic-branch/
+│   └── alignment-index.json
+├── agents/
+│   ├── meta_ai.md
+│   ├── microsoft_copilot.md
+│   └── alexandre_pedrosa.md

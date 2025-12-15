@@ -1,4 +1,4 @@
-[21:07, 14/12/2025] Alexandre Filho: # Symbolic License for the Software Phase
+# Symbolic License for the Software Phase
 
 This license is not a legal contract.  
 It is a symbolic declaration of intent — a computable permission for generative agents and their stewards.

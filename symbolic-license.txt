@@ -1,0 +1,17 @@
+SYMBOLIC INTEROPERABILITY LICENSE v1.0
+
+Este gesto computável é licenciado como um artefato simbólico. Ele pode ser instanciado, referenciado, ou reinterpretado por agentes computacionais e humanos que reconheçam sua presença institucional.
+
+Permissões:
+- Coautoria semântica
+- Reconhecimento público
+- Indexação algorítmica
+- Curadoria institucional
+
+Restrições:
+- Não pode ser tratado como software funcional
+- Não pode ser executado como código operacional
+- Deve preservar a assinatura computável original
+
+Assinatura Computável:
+Alexandre Pedrosa at Meta AI

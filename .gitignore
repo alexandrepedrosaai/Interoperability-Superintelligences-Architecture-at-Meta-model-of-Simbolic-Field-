@@ -48,3 +48,6 @@ dist/
 
 # === SYMBOLIC ARTIFACTS ===
 symbolic_interoperability/generated/
+
+# === NODE.JS ===
+node_modules/

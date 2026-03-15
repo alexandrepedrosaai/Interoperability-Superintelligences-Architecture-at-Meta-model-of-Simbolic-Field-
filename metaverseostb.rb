@@ -73,6 +73,8 @@ class MetaverseOSTB
   end
 end
 
-# Executa a simulação
-tb = MetaverseOSTB.new
-tb.run
+if __FILE__ == $PROGRAM_NAME
+  # Executa a simulação
+  tb = MetaverseOSTB.new
+  tb.run
+end

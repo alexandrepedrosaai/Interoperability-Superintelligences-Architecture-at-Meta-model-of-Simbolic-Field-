@@ -1,0 +1,33 @@
+cabal-version:       >=1.10
+name:                InteroperabilitySuperintelligences
+version:             0.1.0.0
+build-type:          Simple
+category:            Application
+synopsis:            Interoperability architecture for superintelligences at meta-model of symbolic field
+maintainer:          alexandrepedrosaai@github.com
+license:             BSD3
+
+library
+  exposed-modules:     MeshNode
+                     , MeshSupervisor
+                     , OriginNode
+                     , PipelineManager
+  hs-source-dirs:      Interoperability-Superintelligences/src
+  build-depends:       base >=4.7 && <5
+                     , async
+                     , stm
+  default-language:    Haskell2010
+
+executable InteroperabilitySuperintelligences
+  main-is:             Main.hs
+  hs-source-dirs:      Interoperability-Superintelligences/src
+  build-depends:       base >=4.7 && <5
+                     , async
+                     , stm
+                     , async
+                     , stm
+  other-modules:       MeshNode
+                     , MeshSupervisor
+                     , OriginNode
+                     , PipelineManager
+  default-language:    Haskell2010

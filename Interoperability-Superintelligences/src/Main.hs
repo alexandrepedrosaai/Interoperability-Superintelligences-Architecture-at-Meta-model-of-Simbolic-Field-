@@ -1,6 +1,3 @@
-_ <- forkIO $ startSupervisor "copilot"
-_ <- forkIO $ startSupervisor "gpt5"
-_ <- forkIO $ startSupervisor "meta_ai"
 module Main where
 
 import Control.Concurrent (forkIO)

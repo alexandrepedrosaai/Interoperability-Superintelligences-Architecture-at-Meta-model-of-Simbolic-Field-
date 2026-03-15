@@ -41,6 +41,7 @@ Desktop.ini
 
 # === DISTRIBUTION & ARCHIVES ===
 dist/
+dist-newstyle/
 *.egg-info/
 *.zip
 *.tar.gz

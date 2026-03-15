@@ -16,13 +16,19 @@ jobs:
 
     steps:
     - uses: actions/checkout@v4
-    - name: Set up Ruby 2.6
-    # To automatically get bug fixes and new Ruby versions for ruby/setup-ruby,
-    # change this to (see https://github.com/ruby/setup-ruby#versioning):
-    # uses: ruby/setup-ruby@v1
-      uses: ruby/setup-ruby@55283cc23133118229fd3f97f9336ee23a179fcf # v1.146.0
-      with:
-        ruby-version: 2.6.x
+
+    - name: Install Ruby via rbenv and ruby-build
+      run: |
+        sudo apt-get update
+        sudo apt-get install -y git build-essential libssl-dev libreadline-dev zlib1g-dev
+        git clone https://github.com/rbenv/rbenv.git ~/.rbenv
+        echo "$HOME/.rbenv/bin" >> $GITHUB_PATH
+        echo "$HOME/.rbenv/shims" >> $GITHUB_PATH
+        git clone https://github.com/rbenv/ruby-build.git ~/.rbenv/plugins/ruby-build
+        ~/.rbenv/plugins/ruby-build/install.sh
+        ~/.rbenv/bin/rbenv install 2.6.1
+        ~/.rbenv/bin/rbenv global 2.6.1
+        ~/.rbenv/versions/2.6.1/bin/ruby -v
 
     - name: Publish to GPR
       run: |

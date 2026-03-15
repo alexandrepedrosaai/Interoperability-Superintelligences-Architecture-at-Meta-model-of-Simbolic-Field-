@@ -17,16 +17,26 @@ jobs:
     steps:
     - uses: actions/checkout@v4
 
+    - name: Cache Ruby 2.6.1
+      uses: actions/cache@v4
+      id: ruby-cache
+      with:
+        path: ~/.rbenv/versions/2.6.1
+        key: rbenv-ruby-2.6.1-${{ runner.os }}
+
     - name: Install Ruby via rbenv and ruby-build
       run: |
         sudo apt-get update
         sudo apt-get install -y git build-essential libssl-dev libreadline-dev zlib1g-dev
-        git clone --branch v1.3.0 --depth 1 https://github.com/rbenv/rbenv.git ~/.rbenv
+        git clone --branch v1.3.2 --depth 1 https://github.com/rbenv/rbenv.git ~/.rbenv
         echo "$HOME/.rbenv/bin" >> $GITHUB_PATH
         echo "$HOME/.rbenv/shims" >> $GITHUB_PATH
-        git clone --branch v20231109 --depth 1 https://github.com/rbenv/ruby-build.git ~/.rbenv/plugins/ruby-build
-        ~/.rbenv/bin/rbenv install 2.6.1
+        git clone --branch v20260311 --depth 1 https://github.com/rbenv/ruby-build.git ~/.rbenv/plugins/ruby-build
+        if [ "${{ steps.ruby-cache.outputs.cache-hit }}" != "true" ]; then
+          ~/.rbenv/bin/rbenv install 2.6.1
+        fi
         ~/.rbenv/bin/rbenv global 2.6.1
+        ~/.rbenv/bin/rbenv rehash
         ~/.rbenv/versions/2.6.1/bin/ruby -v
 
     - name: Publish to GPR

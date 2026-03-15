@@ -24,6 +24,8 @@ executable InteroperabilitySuperintelligences
   build-depends:       base >=4.7 && <5
                      , async
                      , stm
+                     , async
+                     , stm
   other-modules:       MeshNode
                      , MeshSupervisor
                      , OriginNode

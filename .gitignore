@@ -46,6 +46,7 @@ dist-newstyle/
 *.zip
 *.tar.gz
 *.pdf
+*.gem
 
 # === SYMBOLIC ARTIFACTS ===
 symbolic_interoperability/generated/

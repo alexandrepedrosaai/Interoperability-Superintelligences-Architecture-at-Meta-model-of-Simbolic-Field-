@@ -4,6 +4,8 @@
 # Identity Verified, Crypto Secured, Social Connected, Economy Running, AI Orchestrated.
 
 class MetaverseOSTB
+  STEP_NS = 10
+
   def initialize
     @time_ns = 0
     @clk = 0
@@ -21,9 +23,9 @@ class MetaverseOSTB
     }
   end
 
-  def tick(ns)
-    ns.times do
-      @time_ns += 10
+  def tick(steps)
+    steps.times do
+      @time_ns += STEP_NS
       @clk ^= 1
     end
   end

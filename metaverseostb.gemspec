@@ -1,6 +1,6 @@
 Gem::Specification.new do |spec|
   spec.name          = "metaverseostb"
-  spec.version       = "0.1.0"
+  spec.version       = "0.1.1"
   spec.authors       = ["Alexandre Pedrosa"]
   spec.summary       = "Metaverse-OS Master Testbench"
   spec.description   = "Simulates the phases described in the Metaverse-OS VHDL testbench: " \

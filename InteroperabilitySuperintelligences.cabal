@@ -5,7 +5,7 @@ build-type:          Simple
 category:            Application
 synopsis:            Interoperability architecture for superintelligences at meta-model of symbolic field
 maintainer:          alexandrepedrosaai@github.com
-license:             BSD3
+license:             BSD-3-Clause
 
 library
   exposed-modules:     MeshNode

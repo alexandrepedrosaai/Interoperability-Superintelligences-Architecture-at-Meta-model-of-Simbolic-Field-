@@ -1,4 +1,4 @@
-cabal-version:       >=1.10
+cabal-version:       2.4
 name:                InteroperabilitySuperintelligences
 version:             0.1.0.0
 build-type:          Simple
@@ -22,8 +22,6 @@ executable InteroperabilitySuperintelligences
   main-is:             Main.hs
   hs-source-dirs:      Interoperability-Superintelligences/src
   build-depends:       base >=4.7 && <5
-                     , async
-                     , stm
                      , async
                      , stm
   other-modules:       MeshNode

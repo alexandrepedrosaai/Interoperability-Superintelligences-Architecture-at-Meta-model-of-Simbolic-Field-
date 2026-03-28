@@ -4,7 +4,9 @@
   "description": "Interoperability Superintelligences Architecture - Meta-model of Symbolic Field",
   "main": "server.js",
   "scripts": {
-    "start": "node server.js"
+    "setup": "npm install",
+    "start": "node server.js",
+    "check": "node --check server.js"
   },
   "dependencies": {
     "express": "^4.18.2",

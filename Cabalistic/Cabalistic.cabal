@@ -1,0 +1,9 @@
+cabal-version:       >=1.10
+name:                Cabalistic
+version:             0.1.0.0
+build-type:          Simple
+
+executable Cabalistic
+  main-is:             Cabalistic.hs
+  build-depends:       base >=4.7 && <5
+  default-language:    Haskell2010

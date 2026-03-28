@@ -10,5 +10,5 @@ Gem::Specification.new do |spec|
   spec.license       = "Nonstandard"
   spec.files         = ["avatarostb.rb"]
   spec.require_paths = ["."]
-  spec.required_ruby_version = ">= 2.6.0"
+  spec.required_ruby_version = ">= 3.3.0"
 end

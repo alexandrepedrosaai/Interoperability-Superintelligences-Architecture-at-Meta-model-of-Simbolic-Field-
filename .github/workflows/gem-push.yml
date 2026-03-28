@@ -1,3 +1,4 @@
+
 name: Ruby Gem
 
 on:
@@ -5,6 +6,7 @@ on:
     branches: [ "main" ]
   pull_request:
     branches: [ "main" ]
+  workflow_dispatch:
 
 jobs:
   build:
@@ -16,32 +18,42 @@ jobs:
 
     steps:
     - uses: actions/checkout@v4
-    - name: Set up Ruby 3.3
+
+    - name: Set up Ruby
       uses: ruby/setup-ruby@v1
       with:
         ruby-version: "3.3"
-        bundler-cache: true
 
-    - name: Publish to GPR
+    - name: Build and Publish to GitHub Packages
       run: |
         mkdir -p $HOME/.gem
         touch $HOME/.gem/credentials
         chmod 0600 $HOME/.gem/credentials
-        printf -- "---\n:github: ${GEM_HOST_API_KEY}\n" > $HOME/.gem/credentials
-        gem build *.gemspec
-        gem push --KEY github --host https://rubygems.pkg.github.com/${OWNER} *.gem
+        printf -- "---\n:github: Bearer ${GITHUB_TOKEN}\n" > $HOME/.gem/credentials
+        
+        # Build all gemspecs found
+        for spec in *.gemspec; do
+          gem build "$spec"
+        done
+        
+        # Push all generated gems to GitHub Packages
+        for gem in *.gem; do
+          gem push --key github --host https://rubygems.pkg.github.com/${{ github.repository_owner }} "$gem" || echo "Failed to push $gem to GitHub"
+        done
       env:
-        GEM_HOST_API_KEY: "Bearer ${{secrets.GITHUB_TOKEN}}"
-        OWNER: ${{ github.repository_owner }}
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
     - name: Publish to RubyGems
+      if: env.RUBYGEMS_AUTH_TOKEN != ''
       run: |
         mkdir -p $HOME/.gem
         touch $HOME/.gem/credentials
         chmod 0600 $HOME/.gem/credentials
-        printf -- "---\n:rubygems_api_key: ${GEM_HOST_API_KEY}\n" > $HOME/.gem/credentials
-        gem build *.gemspec
-        gem push *.gem
-        env:
-        GEM_HOST_API_KEY: "${{secrets.RUBYGEMS_AUTH_TOKEN}}"
+        printf -- "---\n:rubygems_api_key: ${RUBYGEMS_AUTH_TOKEN}\n" > $HOME/.gem/credentials
+        
+        for gem in *.gem; do
+          gem push "$gem" || echo "Failed to push $gem to RubyGems"
+        done
+      env:
+        RUBYGEMS_AUTH_TOKEN: ${{ secrets.RUBYGEMS_AUTH_TOKEN }}
       continue-on-error: true

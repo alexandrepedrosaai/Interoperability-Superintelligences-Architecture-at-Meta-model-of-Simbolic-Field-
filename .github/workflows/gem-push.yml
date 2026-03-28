@@ -33,6 +33,7 @@ jobs:
         
         # Build all gemspecs found
         for spec in *.gemspec; do
+          echo "Building $spec"
           gem build "$spec"
         done
         

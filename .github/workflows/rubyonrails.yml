@@ -28,23 +28,22 @@ jobs:
 env:
       RAILS_ENV: test
       DATABASE_URL: "postgres://rails:password@localhost:5432/rails_test"
-    steps:
-- name: Checkout code
+      steps:   
+      - name: Checkout code
         uses: actions/checkout@v4
-      # Add or replace dependency steps here
-      - name: Install Ruby and gems
-        uses: ruby/setup-ruby@78c01b705fd9d5ad960d432d3a0cfa341d50e410 # v1.179.1
-        with:
+        # Add or replace dependency steps here
+name: Install Ruby and gems
+uses: ruby/setup-ruby@78c01b705fd9d5ad960d432d3a0cfa341d50e410 # v1.179.1
+with:
           bundler-cache: true
-      # Add or replace database setup steps here
-      - name: Set up database schema
-        run: bin/rails db:schema:load
+                m# Add or replace database setup steps here
+name: Set up database schema
+run: bin/rails db:schema:load
       # Add or replace test runners here
-      - name: Run tests
-        run: bin/rake
+name: Run tests
 lint:
-    runs-on: ubuntu-latest
-    steps:
+       runs-on: ubuntu-latest
+steps: 
       - name: Checkout code
         uses: actions/checkout@v4
       - name: Install Ruby and gems
@@ -60,3 +59,21 @@ lint:
         run: bin/brakeman -q -w2
       - name: Lint Ruby files
         run: bin/rubocop --parallel
+      - name: Setup Go environment
+        uses: actions/setup-go@v6.3.0
+        with:
+    # The Go version to download (if necessary) and use. Supports semver spec and ranges. Be sure to enclose this option in single quotation marks.
+        go-version: # optional
+    # Path to the go.mod, go.work, .go-version, or .tool-versions file.
+    go-version-file: # optional
+    # Set this option to true if you want the action to always check for the latest available version that satisfies the version spec
+    check-latest: # optional
+    # Used to pull Go distributions from go-versions. Since there's a default, this is typically not supplied by the user. When running this action on github.com, the default value is sufficient. When running on GHES, you can pass a personal access token for github.com if you are experiencing rate limiting.
+    token: # optional, default is ${{ github.server_url == 'https://github.com' && github.token || '' }}
+    # Used to specify whether caching is needed. Set to true, if you'd like to enable caching.
+    cache: # optional, default is true
+    # Used to specify the path to a dependency file (e.g., go.mod, go.sum)
+    cache-dependency-path: # optional
+    # Target architecture for Go to use. Examples: x86, x64. Will use system architecture by default.
+    architecture: # optional
+          

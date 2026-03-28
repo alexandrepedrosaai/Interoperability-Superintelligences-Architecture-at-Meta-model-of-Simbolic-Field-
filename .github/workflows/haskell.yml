@@ -11,18 +11,18 @@ permissions:
 
 jobs:
   build:
-
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v4
-    - uses: actions/setup-haskell@v1
+    - uses: actions/checkout@v6
+
+    - uses: haskell-actions/setup@v2
       with:
-        ghc-version: '8.10.3'
-        cabal-version: '3.2'
+        ghc-version: '9.6'
+        cabal-version: '3.10'
 
     - name: Cache
-      uses: actions/cache@v3
+      uses: actions/cache@v5
       env:
         cache-name: cache-cabal
       with:
@@ -37,7 +37,9 @@ jobs:
       run: |
         cabal update
         cabal build --only-dependencies --enable-tests --enable-benchmarks
+
     - name: Build
       run: cabal build --enable-tests --enable-benchmarks all
+
     - name: Run tests
       run: cabal test all

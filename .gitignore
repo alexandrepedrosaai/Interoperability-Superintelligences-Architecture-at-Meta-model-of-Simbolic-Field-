@@ -41,10 +41,12 @@ Desktop.ini
 
 # === DISTRIBUTION & ARCHIVES ===
 dist/
+dist-newstyle/
 *.egg-info/
 *.zip
 *.tar.gz
 *.pdf
+*.gem
 
 # === SYMBOLIC ARTIFACTS ===
 symbolic_interoperability/generated/

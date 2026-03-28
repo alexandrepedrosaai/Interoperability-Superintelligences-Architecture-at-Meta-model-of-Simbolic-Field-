@@ -1,0 +1,54 @@
+name: Haskell CI
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v4
+    - uses: actions/setup-haskell@v1
+      with:
+        ghc-version: '8.10.3'
+        cabal-version: '3.2'
+
+    - name: Cache
+      uses: actions/cache@v3
+      env:
+        cache-name: cache-cabal
+      with:
+        path: ~/.cabal
+        key: ${{ runner.os }}-build-${{ env.cache-name }}-${{ hashFiles('**/*.cabal') }}-${{ hashFiles('**/cabal.project') }}
+        restore-keys: |
+          ${{ runner.os }}-build-${{ env.cache-name }}-
+          ${{ runner.os }}-build-
+          ${{ runner.os }}-
+
+    - name: Install dependencies
+      run: |
+        cabal update
+        cabal build --only-dependencies --enable-tests --enable-benchmarks
+    - name: Build
+      run: cabal build --enable-tests --enable-benchmarks all
+    - name: Run tests
+      run: cabal test all
+    name: Upload a Build Artifact
+  uses: actions/upload-artifact@v3.2.2
+  with:
+    # Artifact name
+    name: # optional, default is artifact
+    # A file, directory or wildcard pattern that describes what to upload
+    path: 
+    # The desired behavior if no files are found using the provided path.
+Available Options:
+  concurrency: description:
+    

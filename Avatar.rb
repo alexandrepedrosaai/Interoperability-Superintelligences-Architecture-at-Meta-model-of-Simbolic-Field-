@@ -1,9 +1,9 @@
-# Metaverse-OS — Master Testbench em Ruby
+# Avatar-OS — Master Testbench em Ruby
 # Este script simula as fases descritas no testbench VHDL
 # Reset, Avatar Init, World Render, Physics Active, Assets Loaded,
 # Identity Verified, Crypto Secured, Social Connected, Economy Running, AI Orchestrated.
 
-class MetaverseOSTB
+class AvatarOSTB
   STEP_NS = 10
 
   def initialize
@@ -77,7 +77,7 @@ end
 
 if __FILE__ == $PROGRAM_NAME
   # Executa a simulação
-  tb = MetaverseOSTB.new
+  tb = AvatarTB.new
   tb.run
 end
 # Metaverse-OS — Master Testbench em Ruby
@@ -85,7 +85,7 @@ end
 # Reset, Avatar Init, World Render, Physics Active, Assets Loaded,
 # Identity Verified, Crypto Secured, Social Connected, Economy Running, AI Orchestrated.
 
-class MetaverseOSTB
+class AvatarTB
   STEP_NS = 10
 
   def initialize
@@ -159,6 +159,6 @@ end
 
 if __FILE__ == $PROGRAM_NAME
   # Executa a simulação
-  tb = MetaverseOSTB.new
+  tb = AvatarOSTB.new
   tb.run
 end

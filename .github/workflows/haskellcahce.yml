@@ -59,9 +59,9 @@ with:
     # Destination path
     path: # optional
           
-            - name: First interaction
-  uses: actions/first-interaction@v1.3.0
-  with:
+               - name: First interaction
+uses: actions/first-interaction@v1.3.0
+with:
     # Token for the repository. Can be passed in using {{ secrets.GITHUB_TOKEN }}
     repo-token: 
     # Comment to post on an individual's first issue

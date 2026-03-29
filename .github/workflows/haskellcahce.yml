@@ -15,11 +15,11 @@ jobs:
 
     steps:
     - uses: actions/checkout@v4
-    
+
     - uses: haskell-actions/setup@v2
       with:
-        ghc-version: '8.10.3'
-        cabal-version: '3.2'
+        ghc-version: '9.6'
+        cabal-version: '3.10'
 
     - name: Cache
       uses: actions/cache@v4
@@ -37,30 +37,9 @@ jobs:
       run: |
         cabal update
         cabal build --only-dependencies --enable-tests --enable-benchmarks
-        
+
     - name: Build
       run: cabal build --enable-tests --enable-benchmarks all
-      
+
     - name: Run tests
-      run: cabal test all 
-
-    - name: Upload a Build Artifact
-      uses: actions/upload-artifact@v4
-      with:
-        name: artifact
-        path: .
-
-    - name: Download a Build Artifact
-      uses: actions/download-artifact@v4
-      with:
-        name: artifact
-
-    - name: First interaction
-      uses: actions/first-interaction@v1.3.0
-      with:
-        repo-token: ${{ secrets.GITHUB_TOKEN }}
-
-    - name: Setup .NET Core SDK
-      uses: actions/setup-dotnet@v4
-      with:
-        dotnet-version: '6.0.x'
+      run: cabal test all

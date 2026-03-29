@@ -16,13 +16,13 @@ jobs:
     steps:
     - uses: actions/checkout@v4
     
-    - uses: actions/setup-haskell@v1
+    - uses: haskell-actions/setup@v2
       with:
         ghc-version: '8.10.3'
         cabal-version: '3.2'
 
     - name: Cache
-      uses: actions/cache@v3
+      uses: actions/cache@v4
       env:
         cache-name: cache-cabal
       with:
@@ -45,13 +45,13 @@ jobs:
       run: cabal test all 
 
     - name: Upload a Build Artifact
-      uses: actions/upload-artifact@v3
+      uses: actions/upload-artifact@v4
       with:
         name: artifact
         path: .
 
     - name: Download a Build Artifact
-      uses: actions/download-artifact@v3
+      uses: actions/download-artifact@v4
       with:
         name: artifact
 
@@ -61,6 +61,6 @@ jobs:
         repo-token: ${{ secrets.GITHUB_TOKEN }}
 
     - name: Setup .NET Core SDK
-      uses: actions/setup-dotnet@v3
+      uses: actions/setup-dotnet@v4
       with:
         dotnet-version: '6.0.x'

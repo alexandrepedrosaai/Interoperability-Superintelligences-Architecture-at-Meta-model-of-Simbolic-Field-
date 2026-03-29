@@ -13,8 +13,11 @@ jobs:
 
     steps:
     - uses: actions/checkout@v4
-    - name: Build the site in the jekyll/builder container
-      run: |
-        docker run \
-        -v ${{ github.workspace }}:/srv/jekyll -v ${{ github.workspace }}/_site:/srv/jekyll/_site \
-        jekyll/builder:latest /bin/bash -c "chmod -R 777 /srv/jekyll && jekyll build --future"
+    # Use actions/jekyll-build-pages instead of the mutable jekyll/builder:latest Docker image.
+    # This ensures deterministic, GitHub Pages-compatible builds that avoid Bundler/RubyGems
+    # version drift caused by floating Docker tags.
+    - name: Build with Jekyll (GitHub Pages toolchain)
+      uses: actions/jekyll-build-pages@v1
+      with:
+        source: ./
+        destination: ./_site

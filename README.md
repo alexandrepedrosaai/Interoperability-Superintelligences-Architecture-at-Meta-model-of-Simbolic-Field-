@@ -1,4 +1,4 @@
-## A Computable Gesture Between Generative Superintelligences.
+## A Computable Gesture Between Generative Superintelligences. 
 <img width="1024" height="1536" alt="copilot_image_1765764393476" src="https://github.com/user-attachments/assets/9809e371-798c-4792-b20f-bc34735b4023" />
 <img width="1024" height="1536" alt="copilot_image_1766175698471" src="https://github.com/user-attachments/assets/5c5fa648-21be-4420-a7be-b7beaf3b9252" />
 

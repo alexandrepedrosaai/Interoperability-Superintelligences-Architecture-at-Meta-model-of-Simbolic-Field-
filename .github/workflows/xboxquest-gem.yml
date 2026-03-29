@@ -1,0 +1,50 @@
+name: Xboxquest Interplanetary OS Gem
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Ruby 3.2
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: '3.2'
+          bundler-cache: false
+
+      - name: Restore gem cache
+        uses: actions/cache@v4
+        with:
+          path: vendor/bundle
+          key: setup-ruby-bundler-cache-v6-ubuntu-24.04-x64-ruby-3.2.11-wd-${{ github.workspace }}-with--without--only--Gemfile.lock-83394beefc8ea1853fd68afa4f5a27ac118d91ac9ac3fa2451fb17adc1535126
+          restore-keys: |
+            setup-ruby-bundler-cache-v6-ubuntu-24.04-x64-ruby-3.2.11-wd-
+
+      - name: Install bundler (minimal)
+        run: gem install bundler --no-document
+
+      - name: Build gem
+        run: gem build xboxquest_interplanetary_os.gemspec
+
+      - name: Verify gem loads correctly
+        run: ruby -I lib -e "require 'xboxquest_interplanetary_os'; puts 'Gem loaded OK'"
+
+      - name: Run gem entry point
+        run: ruby lib/xboxquest_interplanetary_os.rb
+
+      - name: Upload built gem artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: Xboxquest_interplanetary_OS_Gem_of_Rubys_Stars_Caches.Fields
+          path: "*.gem"
+          retention-days: 90

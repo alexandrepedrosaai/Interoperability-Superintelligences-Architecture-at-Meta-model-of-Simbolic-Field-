@@ -4,11 +4,9 @@
 #
 # This workflow will install a prebuilt Ruby version, install dependencies, and
 # run tests and linters.
-name: "Ruby on Rails CI | CD Build and Deploy 
+name: "Ruby CI | CD
 on:
-  push:
-    branches: [ "main" ]
-  pull_request:
+  push: 
     branches: [ "main" ]
 jobs:
   test:
@@ -58,3 +56,11 @@ jobs:
         run: bin/brakeman -q -w2
       - name: Lint Ruby files
         run: bin/rubocop --parallel
+      - name: ServiceNow CI/CD Rollback Plugin
+  # You may pin to the exact commit or the version.
+  # uses: ServiceNow/sncicd-plugin-rollback@600e3f11252fa6690ea329d129854eed2ed3f291
+  uses: ServiceNow/sncicd-plugin-rollback@2.0.0
+  with:
+    # Plugin ID to be rolled back
+    pluginID: 
+          
